@@ -3,7 +3,7 @@ from pathlib import Path
 import io
 import os
 import tempfile
-from backend.services.object_detector import detect_objects
+from services.object_detector import detect_objects
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
