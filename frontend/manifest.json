@@ -1,12 +1,10 @@
 
 {
-  "name": "AccessAI - Assistive Assistant",
+  "name": "AccessAI",
   "short_name": "AccessAI",
-  "description": "An accessible assistant that reads text and describes surroundings.",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#153e75"
+  "theme_color": "#1769ff",
+  "background_color": "#ffffff"
 }
