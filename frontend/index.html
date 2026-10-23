@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fc">
+    <meta name="description" content="AccessAI is an assistive application for reading text, describing scenes, and voice assistance.">
+
+    <title>AccessAI — Your AI Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="./manifest.json">
+
+    <script src="app.js" defer></script>
+    <script src="app-navigation.js" defer></script>
+</head>
+
+<body class="app-home">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="topbar">
+        <a class="brand" href="#" id="home-link" aria-label="AccessAI home">
+            <span class="brand-icon" aria-hidden="true">A</span>
+            <span>Access<span class="brand-accent">AI</span></span>
+        </a>
+        <span class="topbar-label">YOUR ACCESSIBLE WORLD</span>
+    </header>
+
+    <main class="container" id="main-content">
+        <section class="hero" id="home-hero">
+            <div class="hero-content">
+                <span class="eyebrow">YOUR PERSONAL AI ASSISTANT</span>
+                <h1>Your world,<br>made accessible.</h1>
+                <p>Read text, understand pictures, and interact with AccessAI using your voice.</p>
+            </div>
+            <div class="hero-symbol" aria-hidden="true">✳</div>
+        </section>
+
+        <section id="home-actions" class="section home-actions" aria-labelledby="home-title">
+            <div class="section-heading">
+                <div>
+                    <h2 id="home-title">How can I help you?</h2>
+                    <p>Choose a tool to get started.</p>
+                </div>
+                <span class="section-count">4 TOOLS</span>
+            </div>
+
+            <button class="home-action home-action-main" type="button" data-open-tool="camera">
+                <span class="home-action-icon" aria-hidden="true">◎</span>
+                <span class="home-action-copy">
+                    <strong>Describe my surroundings</strong>
+                    <small>Capture a photo to identify visible objects.</small>
+                </span>
+                <span aria-hidden="true">→</span>
+            </button>
+
+            <div class="home-action-grid">
+                <button class="home-action" type="button" data-open-tool="reader">
+                    <span class="home-action-icon blue" aria-hidden="true">▤</span>
+                    <span class="home-action-copy">
+                        <strong>Read text</strong>
+                        <small>Read signs, pages and labels.</small>
+                    </span>
+                </button>
+
+                <button class="home-action" type="button" data-open-tool="scene">
+                    <span class="home-action-icon purple" aria-hidden="true">◉</span>
+                    <span class="home-action-copy">
+                        <strong>Describe a scene</strong>
+                        <small>Identify objects in a picture.</small>
+                    </span>
+                </button>
+
+                <button class="home-action" type="button" data-open-tool="camera">
+                    <span class="home-action-icon green" aria-hidden="true">▣</span>
+                    <span class="home-action-copy">
+                        <strong>Live camera</strong>
+                        <small>Capture and analyze a photo.</small>
+                    </span>
+                </button>
+
+                <button class="home-action" type="button" data-open-tool="voice">
+                    <span class="home-action-icon orange" aria-hidden="true">♫</span>
+                    <span class="home-action-copy">
+                        <strong>Voice assistant</strong>
+                        <small>Use supported spoken commands.</small>
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- The existing tools stay intact. Only one is shown at a time. -->
+        <section id="tools" class="section" aria-label="AccessAI tools">
+            <button id="back-home" class="back-home" type="button">
+                <span aria-hidden="true">←</span> Back to Home
+            </button>
+
+            <section id="reader-panel" class="panel" aria-labelledby="reader-title">
+                <div class="feature-heading">
+                    <span class="feature-icon blue" aria-hidden="true">▤</span>
+                    <div>
+                        <h2 id="reader-title">Read text</h2>
+                        <p>Extract text from photos and listen to it.</p>
+                    </div>
+                </div>
+
+                <form id="upload-form">
+                    <label class="upload-area" for="image-input">
+                        <span class="upload-symbol" aria-hidden="true">＋</span>
+                        <span class="upload-title">Choose a photo</span>
+                        <span class="muted">Take a picture or select an image</span>
+                    </label>
+
+                    <input id="image-input" name="image" type="file"
+                           accept="image/*" capture="environment" required>
+
+                    <p id="file-name" class="file-name" aria-live="polite">No image selected.</p>
+                    <img id="preview" alt="Preview of selected image" hidden>
+
+                    <button id="read-button" class="primary" type="submit">
+                        Read text from image →
+                    </button>
+                </form>
+
+                <p id="status" class="status" role="status" aria-live="polite">Ready to help.</p>
+
+                <div class="result-heading"><h3>Extracted text</h3></div>
+                <div id="result" class="result" role="region"
+                     aria-label="OCR result" tabindex="0">Your extracted text will appear here.</div>
+
+                <div class="actions">
+                    <button id="speak-button" type="button" disabled>▶ Speak text</button>
+                    <button id="repeat-button" type="button" disabled>↻ Repeat</button>
+                    <button id="stop-button" type="button">■ Stop speaking</button>
+                </div>
+            </section>
+
+            <section id="scene-panel" class="panel" aria-labelledby="scene-title">
+                <div class="feature-heading">
+                    <span class="feature-icon purple" aria-hidden="true">◉</span>
+                    <div>
+                        <h2 id="scene-title">Describe a scene</h2>
+                        <p>Discover objects in a picture.</p>
+                    </div>
+                </div>
+
+                <label class="field-label" for="scene-input">Choose an image</label>
+                <input id="scene-input" type="file" accept="image/*">
+
+                <button id="scene-button" class="primary" type="button">Describe scene →</button>
+
+                <div id="scene-result" class="result" role="status"
+                     aria-live="polite" tabindex="0">Your scene description will appear here.</div>
+
+                <button id="scene-speak" class="secondary full-button"
+                        type="button" disabled>▶ Speak scene description</button>
+            </section>
+
+            <section id="camera-panel" class="panel" aria-labelledby="camera-title">
+                <div class="feature-heading">
+                    <span class="feature-icon green" aria-hidden="true">▣</span>
+                    <div>
+                        <h2 id="camera-title">Live camera</h2>
+                        <p>Capture what's in front of you.</p>
+                    </div>
+                </div>
+
+                <video id="camera-preview" autoplay playsinline muted
+                       aria-label="Live camera preview"></video>
+
+                <div class="button-stack">
+                    <button id="start-camera" class="primary" type="button">Start camera</button>
+                    <div class="actions">
+                        <button id="capture-photo" type="button" disabled>Capture photo</button>
+                        <button id="stop-camera" type="button" disabled>Stop camera</button>
+                    </div>
+                </div>
+
+                <canvas id="camera-canvas" hidden></canvas>
+
+                <p id="camera-status" class="status" role="status" aria-live="polite">
+                    Camera is not running.
+                </p>
+
+                <div class="actions camera-actions">
+                    <button id="camera-read-text" type="button" disabled>Read captured text</button>
+                    <button id="camera-describe-scene" type="button" disabled>Describe captured scene</button>
+                </div>
+
+                <div id="camera-result" class="result" role="status"
+                     aria-live="polite" tabindex="0">Your camera results will appear here.</div>
+
+                <button id="camera-speak" class="secondary full-button"
+                        type="button" disabled>▶ Speak result</button>
+            </section>
+
+            <section id="voice-panel" class="panel" aria-labelledby="voice-title">
+                <div class="feature-heading">
+                    <span class="feature-icon orange" aria-hidden="true">♫</span>
+                    <div>
+                        <h2 id="voice-title">Voice assistant</h2>
+                        <p>Control AccessAI with supported spoken commands.</p>
+                    </div>
+                </div>
+
+                <button id="voice-command-button" class="primary full-button"
+                        type="button" aria-pressed="false">Start voice commands</button>
+
+                <p id="voice-status" class="status" role="status" aria-live="polite">
+                    Voice assistant is ready.
+                </p>
+
+                <div class="voice-hints">
+                    <h3>Try saying</h3>
+                    <div class="hint-list">
+                        <span>“Read text”</span>
+                        <span>“Describe scene”</span>
+                        <span>“Repeat result”</span>
+                        <span>“Stop speaking”</span>
+                    </div>
+                </div>
+
+                <p id="voice-transcript" class="result" aria-live="polite">
+                    Your spoken command will appear here.
+                </p>
+            </section>
+        </section>
+
+        <aside class="safety-note">
+            <span aria-hidden="true">ⓘ</span>
+            <p>AI can make mistakes. Verify important information and stay aware of your surroundings. AccessAI is not a substitute for a cane, guide dog, or other navigation aid.</p>
+        </aside>
+
+        <footer>
+            <span class="footer-brand">AccessAI</span>
+            <p>Assistive Agent for Visually Impaired</p>
+            <span class="footer-tag">BUILT FOR ACCESSIBILITY · SDG 10</span>
+        </footer>
+    </main>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")
+                    .catch((error) => {
+                        console.error("AccessAI service worker registration failed:", error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
