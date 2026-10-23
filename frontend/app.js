@@ -3,8 +3,8 @@
    AccessAI — Assistive Agent for Visually Impaired
    OCR + Object Detection + Camera + Speech + Voice Commands
    ========================================================= */
-
-const API_URL = "https://beginning-rocky-result-designer.trycloudflare.com";
+const API_URL = "https://accessai-ep6z.onrender.com";
+   // ---------- OCR ELEMENTS ----------
    // ---------- OCR ELEMENTS ----------
 const form = document.getElementById("upload-form");
 const imageInput = document.getElementById("image-input");

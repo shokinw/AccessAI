@@ -1,5 +1,6 @@
 
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
 import io
 import os
 import tempfile
@@ -29,7 +30,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Local development only
+    allow_origins=[
+        "https://accessai.samridhixxx221.workers.dev"
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
