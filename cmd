@@ -21,3 +21,11 @@ http://10.52.104.127:5500/frontend/index.html
 
 
 cloudflar"""  cloudflared tunnel --url http://localhost:5500
+
+
+frontend https://accessai.samridhixxx221.workers.dev/?utm_source=chatgpt.com
+
+git add frontend/app.js backend/main.py
+git commit -m "Connect deployed frontend and configure CORS"
+git pull --rebase origin main
+git push
