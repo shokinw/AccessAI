@@ -3,6 +3,11 @@
 
 AccessAI is a mobile-friendly AI-assisted application designed to help users access information through image-based text extraction, scene descriptions, and voice interaction.
 
+
+https://github.com/user-attachments/assets/c5bc2c20-0b8f-4583-9444-54b36455cc82
+
+
+
 ## Features
 
 - **Read Text:** Extract text from images using OCR and listen to the result.
@@ -20,6 +25,7 @@ AccessAI is a mobile-friendly AI-assisted application designed to help users acc
 - Deployment: Planned static frontend hosting and cloud backend hosting
 
 ## Project Structure
+<img width="1917" height="1078" alt="Screenshot 2026-10-25 023820" src="https://github.com/user-attachments/assets/90b0c544-fdc5-437f-9852-63ed0c899e29" />
 
 ```text
 AccessAI/
